@@ -4,13 +4,19 @@ import 'package:quiz_app/constants.dart';
 import 'package:quiz_app/screens/quiz_screen.dart';
 import 'package:quiz_app/screens/settings_screen.dart';
 
-class MenuScreen extends StatelessWidget {
+class MenuScreen extends StatefulWidget {
   static String id = 'menu_screen';
+
+  @override
+  _MenuScreenState createState() => _MenuScreenState();
+}
+
+class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        color: Colors.blueGrey,
+        color: Colors.blueGrey.shade700,
         child: Column(
           children: <Widget>[
             Padding(
