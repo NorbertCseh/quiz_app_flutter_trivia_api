@@ -45,16 +45,9 @@ class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Back'),
-        ),
-      ),
+      appBar: AppBar(),
       body: Container(
-        color: Colors.blueGrey.shade700,
+        color: Colors.blueGrey.shade900,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[

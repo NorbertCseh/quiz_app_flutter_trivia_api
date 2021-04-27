@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:quiz_app/constants.dart';
+import 'package:quiz_app/entites/question.dart';
+import 'package:quiz_app/entites/questions.dart';
 import 'package:quiz_app/screens/quiz_screen.dart';
 import 'package:quiz_app/screens/settings_screen.dart';
+import 'package:quiz_app/widgets/menu_button.dart';
 
 class MenuScreen extends StatefulWidget {
   static String id = 'menu_screen';
@@ -12,63 +13,32 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
+  Questions questions = Questions();
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        color: Colors.blueGrey.shade700,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Quiz'),
+      ),
+      body: Container(
+        color: Colors.blueGrey.shade900,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: TextButton(
-                style: kMenuButtonStyle,
-                onPressed: () {
-                  Navigator.pushNamed(context, QuizScreen.id);
+            MenuButton(
+              buttonText: 'Quiz',
+              routeDestination: QuizScreen.id,
+            ),
+            MenuButton(
+              buttonText: 'Settings',
+              routeDestination: SettingScreen.id,
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  await questions.getQuestions();
                 },
-                child: Text(
-                  'Quiz',
-                  style: kMenuTextStyle,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: TextButton(
-                style: kMenuButtonStyle,
-                onPressed: () {
-                  Navigator.pushNamed(context, SettingScreen.id);
-                },
-                child: Text(
-                  'Settings',
-                  style: kMenuTextStyle,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: TextButton(
-                style: kMenuButtonStyle,
-                onPressed: null,
-                child: Text(
-                  'Button 3',
-                  style: kMenuTextStyle,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: TextButton(
-                style: kMenuButtonStyle,
-                onPressed: () {
-                  SystemNavigator.pop();
-                },
-                child: Text(
-                  'Exit',
-                  style: kMenuTextStyle,
-                ),
-              ),
-            ),
+                child: Text('Test'))
           ],
         ),
       ),

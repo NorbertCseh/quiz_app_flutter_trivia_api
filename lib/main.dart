@@ -12,6 +12,7 @@ class QuizApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MenuScreen(),
+      theme: ThemeData.dark(),
       initialRoute: MenuScreen.id,
       routes: {
         MenuScreen.id: (context) => MenuScreen(),
