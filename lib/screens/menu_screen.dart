@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/entites/question.dart';
 import 'package:quiz_app/entites/questions.dart';
-import 'package:quiz_app/screens/quiz_screen.dart';
+import 'package:quiz_app/screens/loading_screen.dart';
 import 'package:quiz_app/screens/settings_screen.dart';
 import 'package:quiz_app/widgets/menu_button.dart';
 
@@ -28,17 +27,12 @@ class _MenuScreenState extends State<MenuScreen> {
           children: <Widget>[
             MenuButton(
               buttonText: 'Quiz',
-              routeDestination: QuizScreen.id,
+              routeDestination: LoadingScreen.id,
             ),
             MenuButton(
               buttonText: 'Settings',
               routeDestination: SettingScreen.id,
             ),
-            ElevatedButton(
-                onPressed: () async {
-                  await questions.getQuestions();
-                },
-                child: Text('Test'))
           ],
         ),
       ),
