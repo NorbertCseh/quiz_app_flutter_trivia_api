@@ -23,17 +23,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void loadData() async {
-    print('start');
     await Provider.of<Questions>(context, listen: false).loadQuestions();
     Provider.of<Questions>(context, listen: false).getQuestion(0);
-    print('done');
     Navigator.pushNamed(context, QuizScreen.id);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('loading...'),
+    return Column(
+      children: <Widget>[
+        Container(
+          child: Text('Loading...'),
+        )
+      ],
     );
   }
 }

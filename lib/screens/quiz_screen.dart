@@ -14,6 +14,7 @@ class QuizScreen extends StatefulWidget {
 class _QuizScreenState extends State<QuizScreen> {
   int questionId = 0;
   int correctAnswers = 0;
+  List<String> mixedAnswers;
 
   String questionText;
   String answer1;
@@ -36,13 +37,10 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     questionText = Provider.of<Questions>(context).currentQuestion.question;
-    answer1 = Provider.of<Questions>(context).currentQuestion.correctAnswer;
-    answer2 =
-        Provider.of<Questions>(context).currentQuestion.incorrectAnswers[0];
-    answer3 =
-        Provider.of<Questions>(context).currentQuestion.incorrectAnswers[1];
-    answer4 =
-        Provider.of<Questions>(context).currentQuestion.incorrectAnswers[2];
+    answer1 = Provider.of<Questions>(context).currentQuestion.mixedAnswers[0];
+    answer2 = Provider.of<Questions>(context).currentQuestion.mixedAnswers[1];
+    answer3 = Provider.of<Questions>(context).currentQuestion.mixedAnswers[2];
+    answer4 = Provider.of<Questions>(context).currentQuestion.mixedAnswers[3];
 
     return Scaffold(
       body: SafeArea(
@@ -98,6 +96,9 @@ class _QuizScreenState extends State<QuizScreen> {
               QuizButton(
                 answerOption: answer4,
               ),
+              Text(Provider.of<Questions>(context)
+                  .currentQuestion
+                  .correctAnswer),
             ],
           ),
         ),

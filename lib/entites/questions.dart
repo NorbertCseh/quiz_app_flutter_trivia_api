@@ -28,6 +28,14 @@ class Questions extends ChangeNotifier {
 
   void getQuestion(int id) {
     currentQuestion = questions[id];
+    currentQuestion.mixAnswers();
     notifyListeners();
+  }
+
+  bool checkAnswer(String selectedAnswer) {
+    if (selectedAnswer == currentQuestion.correctAnswer) {
+      return true;
+    }
+    return false;
   }
 }
